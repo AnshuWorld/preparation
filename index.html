@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <link rel="stylesheet" href="stylee.css">
+      <title>Quiz app </title>
+   </head> 
+   <body>
+    <!---Loader Page---->
+    <section id="loadPg">
+       <div id="loading1"></div>
+       <div id="loading2"></div>
+       <div id="loading3"></div>
+       <div id="centr">Quiz<br>App</div>
+    </section>
+    <!---first Page--->
+    <section id="firstPg">
+    
+       <h2 class="heading">BCECE LE QUIZ</h2>
+       <img id="logo" src="https://dl.dropbox.com/s/ywtlewlkg3rgicp/question-mark_1150-39362.jpg">
+       <div class="btnCont">
+          <button class="btn" id="start">Start</button>
+          <button class="btn" id="mus">🎶</button>
+
+       </div>
+       <button class="btn dark" id="mode">🌙</button>
+    </section>
+    
+    <!---Quiz Page---->
+    <section id="main">
+       <div id="top">
+         <p id="QNum">1</p>
+         <div id="prog"></div>
+         <span>Quiz</span>
+         <span>App</span>
+       </div> 
+       <div id="subHead"></div>
+       <div id="queCont">
+          <div id="queWrap">
+             <p id="que">What's the number of bones in a baby?</p>
+             <button class="opt">206</button>
+             <button class="opt">300</button>
+             <button class="opt">250</button>
+             <button class="opt">205</button>
+          </div>
+       </div>
+       <div id="chngBtn">
+          <button id="prev">Prev</button>
+          <button id="nxt">Next</button>
+       </div>
+       <button id="submit">SUBMIT</button>
+    </section>
+    
+    <!----Result Page----->
+    <section id="resultPg" class="slideL">
+       <h2 class="heading">QUIZ APP</h2>
+       <div id="resultBox">
+          <h2>RESULT</h2>
+          <p><b>Total</b><span>:</span><b>5</b></p>
+          <p><b>Attempted</b><span>:</span><b id="atmptd"></b></p>
+          <p><b>Correct</b><span>:</span><b id="crct"></b></p>
+          <p><b>Incorrect</b><span>:</span><b id="incrct"></b></p>
+       </div>
+       <button class="btn" id="replay">Replay</button>
+       <button class="btn" onclick="home()">Go to Home</button>
+    </section>
+    <audio id="audio" src="https://dl.dropbox.com/s/k6btbfr92sftbhj/faded_instrumental.mp3"></audio>
+<script type="text/javascript">
+alert ("Write your scores in the commemts....")
+   //---Variables Declaration---//
+   var mode = document.querySelector("#mode"),
+   mus = document.querySelector("#mus"),
+   audio = document.querySelector("#audio"),
+   loadPg = document.querySelector("#loadPg"),
+   firstPg = document.querySelector("#firstPg"),
+   start = document.querySelector("#start"),
+replay = document.querySelector("#replay"),
+   incrct = document.querySelector("#incrct"),
+   crct = document.querySelector("#crct"),
+   atmptd = document.querySelector("#atmptd"),
+   main = document.querySelector("#main"),
+   resultPg = document.querySelector("#resultPg"),
+   queWrap = document.querySelector("#queWrap"),
+   progress = document.querySelector("#prog"),
+   qNum = document.querySelector("#QNum"),
+   chngBtn = document.querySelector("#chngBtn"),
+   nxt = document.querySelector("#nxt"),
+   prev = document.querySelector("#prev"),
+   que = document.querySelector("#que"),
+   opt = document.querySelectorAll(".opt");
+   const body = document.body;
+   
+   //---Questions & Answers Object Array----//
+   const ques = [
+      { question : "voice",
+        opt1 : "vocal",
+        opt2 : "tasteful",
+        opt3 : "anxious",
+        opt4 : "none",
+        ans : "vocal"
+      },
+      { question : "god",
+           opt1 : "godlike",
+           opt2 : "godding",
+           opt3 : "godle",
+           opt4 : "none",
+           ans : "godlike"
+      },
+      { question : "taste",
+        opt1 : "tasteful",
+        opt2 : "tasty",
+        opt3 : "taste",
+        opt4 : "none",
+        ans : "tasteful"
+      },
+      { question : "boy",
+        opt1 : "boyish",
+        opt2 : "boish",
+        opt3 : "flutter",
+        opt4 : "vocal",
+        ans : "boyish"
+      },
+      { question : "corruption",
+        opt1 : "corruptible",
+        opt2 : "corrupt",
+        opt3 : "corrupted",
+        opt4 : "none",
+        ans : "corruptible"
+      }
+   ]
+   
+   //---User selection Array---//
+   var selections = new Array(ques.length).fill(" ");
+   
+   //---Adding Listener to Next & Prev Buttons----//
+   nxt.addEventListener("click",vibrt)
+   prev.addEventListener("click",vibrt)
+   nxt.addEventListener("click",function(){
+      if(n<ques.length-1){
+         n++;
+         showQuestion(n);
+      }
+      else{}
+   })
+   prev.addEventListener("click",function(){
+      if(n>0){
+         n--;
+         showQuestion(n);
+      }
+      else{}
+   })
+   
+   
+   //---Question Changer----//
+   var n = 0;
+   function showQuestion(n){
+      qNum.innerHTML = n+1;
+      prog.style.width = (n+1)/ques.length*100+"%";
+      
+      for(i=0; i<opt.length;i++){
+         opt[i].innerHTML = ques[n]["opt"+(i+1)];
+         opt[i].style.background="black";
+      }
+      if(selections[n].innerHTML!=" "){
+         for(j=0;j<opt.length;j++){
+            if(opt[j].innerHTML==selections[n]){
+               opt[j].style.background="orange";
+            }
+         }
+      }
+      que.innerHTML = ques[n].question;
+   }
+   showQuestion(0);
+
+   //----Option Selecting Function----//
+
+   for(i=0;i<opt.length;i++){
+     opt[i].addEventListener("click",function(){
+        body.style.backgroundColor = "orange";
+        for(j=0;j<opt.length;j++){
+          opt[j].style.backgroundColor="#222";
+        }
+        selections[n] = this.innerHTML;
+        this.style.backgroundColor="orange";
+     })
+   }
+   
+   //---Submit----//
+   var correct = 0, incorrect = 0, attempted=0;
+   submit.addEventListener("click",function(){
+      resultPg.style.display="block";
+      setTimeout(function(){resultPg.style.left="0"});
+      for(k=0;k<ques.length;k++){
+         if(selections[k]==ques[k].ans){
+            correct++;
+            attempted++;
+         }
+         else if(selections[k]!=" "){
+            incorrect++;
+            attempted++;
+         }
+      }
+      crct.innerHTML = correct;
+      incrct.innerHTML = incorrect;
+      atmptd.innerHTML = attempted;
+      
+      setTimeout(function(){
+         main.style.display="none";
+      },500)
+   })
+   
+   //---Replay----//
+   replay.addEventListener("click",rplay)
+   function rplay(){
+      selections.fill(" ")
+      for(i=0;i<opt.length;i++){
+         opt[i].style.background="black";
+      }
+      resultPg.style.left="100%";
+      n=0,attempted=0,correct=0,incorrect=0;
+      showQuestion(0);
+      main.style.display="block";
+      setTimeout(function(){
+         resultPg.style.display="none";
+      },500)
+   }
+   
+   //---Start----//
+   start.addEventListener("click",function(){
+      main.style.display="block";
+      main.style.left="100%"
+      setTimeout(function(){
+         main.style.left="0";
+      })
+      setTimeout(function(){
+         firstPg.style.display="none"
+      },500)
+      rplay();
+   })
+   
+   //---Home function----//
+   function home(){
+      firstPg.style.display="block";
+      resultPg.style.left="100%";
+      setTimeout(function(){
+         resultPg.style.display="none";
+      },500)
+   }
+   
+   //---Audio----//
+   mus.addEventListener("click",music)
+   function music(){
+      if(audio.paused){
+         audio.play();
+         mus.style.background="#ffa";
+      }
+      else{
+         audio.pause();
+         mus.style.background="var(--txt)";
+      }
+   }
+   
+   //---Vibrator---//
+   function vibrt(bs){navigator.vibrate("75");}
+   
+   //---Loading----//
+   setTimeout(function(){
+      loadPg.style.left="-100%";
+      setTimeout(function(){
+         loadPg.style.display="none";
+      },500)
+   },6000)
+   
+   //----Mode Changer------//
+   var root = document.querySelector(":root");
+   mode.addEventListener("click",function(){
+      
+      if(mode.classList.contains("dark")){
+         root.style.setProperty("--mode-color","#013");
+         root.style.setProperty("--dot-color","#308a8a");
+         root.style.setProperty("--txt","#eef");
+         root.style.setProperty("--trans","rgba(255,255,255,.1)")
+         mode.className="btn light";
+         mode.innerHTML ="🔆";
+      }
+      else{
+         root.style.setProperty("--mode-color","#60bfbf");
+         root.style.setProperty("--dot-color","white");
+         root.style.setProperty("--txt","#fff");
+         root.style.setProperty("--trans","rgba(0,0,0,.1)")
+         mode.className="btn dark";
+         mode.innerHTML ="🌙";
+      }
+      
+   })
+   
+   
+</script>
+   </body>
+</html>
