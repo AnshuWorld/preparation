@@ -11,12 +11,12 @@
        <div id="loading1"></div>
        <div id="loading2"></div>
        <div id="loading3"></div>
-       <div id="centr">Quiz<br>App</div>
+       <div id="centr">AMRIT<br>KESHRI</div>
     </section>
     <!---first Page--->
     <section id="firstPg">
     
-       <h2 class="heading">BCECE LE QUIZ</h2>
+       <h2 class="heading">BCECE LE QUIZ - 01</h2>
        <img id="logo" src="https://dl.dropbox.com/s/ywtlewlkg3rgicp/question-mark_1150-39362.jpg">
        <div class="btnCont">
           <button class="btn" id="start">Start</button>
@@ -37,11 +37,11 @@
        <div id="subHead"></div>
        <div id="queCont">
           <div id="queWrap">
-             <p id="que">What's the number of bones in a baby?</p>
-             <button class="opt">206</button>
-             <button class="opt">300</button>
-             <button class="opt">250</button>
-             <button class="opt">205</button>
+             <p id="que">Choose the wrong simile !?</p>
+             <button class="opt">As deep as well</button>
+             <button class="opt">As sly as wily</button>
+             <button class="opt">As cool as cucumber</button>
+             <button class="opt">As red as beetroot</button>
           </div>
        </div>
        <div id="chngBtn">
@@ -56,7 +56,7 @@
        <h2 class="heading">QUIZ APP</h2>
        <div id="resultBox">
           <h2>RESULT</h2>
-          <p><b>Total</b><span>:</span><b>5</b></p>
+          <p><b>Total</b><span>:</span><b>25</b></p>
           <p><b>Attempted</b><span>:</span><b id="atmptd"></b></p>
           <p><b>Correct</b><span>:</span><b id="crct"></b></p>
           <p><b>Incorrect</b><span>:</span><b id="incrct"></b></p>
@@ -66,7 +66,6 @@
     </section>
     <audio id="audio" src="https://dl.dropbox.com/s/k6btbfr92sftbhj/faded_instrumental.mp3"></audio>
 <script type="text/javascript">
-
    //---Variables Declaration---//
    var mode = document.querySelector("#mode"),
    mus = document.querySelector("#mus"),
@@ -92,40 +91,180 @@ replay = document.querySelector("#replay"),
    
    //---Questions & Answers Object Array----//
    const ques = [
-      { question : "voice",
-        opt1 : "vocal",
-        opt2 : "tasteful",
-        opt3 : "anxious",
-        opt4 : "none",
-        ans : "vocal"
+      { question : "Choose the incorrect simile:",
+        opt1 : "As deep as well",
+        opt2 : "As sly as wily",
+        opt3 : "As cool as cucumber",
+        opt4 : "As red as beetroot",
+        ans : "As red as beetroot"
       },
-      { question : "god",
-           opt1 : "godlike",
-           opt2 : "godding",
-           opt3 : "godle",
-           opt4 : "none",
-           ans : "godlike"
+      { question : "Choose the incorrect simile:",
+        opt1 : "As dry as bone",
+        opt2 : "As dry as dust",
+        opt3 : "As dry as dirt",
+		opt4 : "As good as gold",
+		ans : "As dry as dirt"
       },
-      { question : "taste",
-        opt1 : "tasteful",
-        opt2 : "tasty",
-        opt3 : "taste",
-        opt4 : "none",
-        ans : "tasteful"
+      { question : "Choose the incorrect simile:",
+        opt1 : "As dumb as pig",
+        opt2 : "As dumb as statue",
+        opt3 : "As deep as well",
+        opt4 : "As faithful as dog",
+        ans : "As dumb as pig"
       },
-      { question : "boy",
-        opt1 : "boyish",
-        opt2 : "boish",
-        opt3 : "flutter",
-        opt4 : "vocal",
-        ans : "boyish"
+      { question : "Choose the incorrect simile:",
+        opt1 : "As black as ebony",
+        opt2 : "As black as pitch",
+        opt3 : "As black as pit ball",
+        opt4 : "As black as coal",
+        ans : "As black as pit ball"
       },
-      { question : "corruption",
-        opt1 : "corruptible",
-        opt2 : "corrupt",
-        opt3 : "corrupted",
-        opt4 : "none",
-        ans : "corruptible"
+      { question : "Choose the incorrect simile:",
+        opt1 : "As fair as well",
+        opt2 : "As fair as rose",
+        opt3 : "As red as blood",
+        opt4 : "As soon as possible",
+        ans : "As fair as well"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As deep as whole",
+        opt2 : "As deep as well",
+        opt3 : "As impatient as lover",
+        opt4 : "As mad as hatter",
+        ans : "As deep as whole"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As blind as pigeon",
+        opt2 : "As bitter as hem lock",
+        opt3 : "As blind as bat",
+        opt4 : "As red as beetroot",
+        ans : "As blind as pigeon"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As deep as well",
+        opt2 : "As black as pitch",
+        opt3 : "As cold as ice",
+        opt4 : "As noisy as lizard",
+        ans : "As noisy as lizard"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As fit as fiddle",
+        opt2 : "As sly as wily",
+        opt3 : "As gloomy as midnight",
+        opt4 : "As impatient as lover",
+        ans : "As gloomy as midnight"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As impatient as hatter",
+        opt2 : "As sly as lamb",
+        opt3 : "As bold as elephant",
+        opt4 : "All of these",
+        ans : "All of these"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As bitter as bitter gaurd",
+        opt2 : "As sly as wily",
+        opt3 : "As still as long",
+        opt4 : "As good as gold",
+        ans : "As bitter as bitter gaurd"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As good as gold",
+        opt2 : "As bright as beauty",
+        opt3 : "As impatient as lover",
+        opt4 : "As red as blood",
+        ans : "As bright as beauty"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As deep as whole",
+        opt2 : "As mad as march hare",
+        opt3 : "As cool as cucumber",
+        opt4 : "As red as beetroot",
+        ans : "As deep as whole"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As wise as bat",
+        opt2 : "As good as wilygold",
+        opt3 : "As cool as cucumber",
+        opt4 : "As bright as silver",
+        ans : "As wise as bat"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As impatient as lover",
+        opt2 : "As brittle as wood",
+        opt3 : "As good as gold",
+        opt4 : "As red as rose",
+        ans : "As brittle as wood"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As red as rose",
+        opt2 : "As red as turkey cock",
+        opt3 : "As red as blood",
+        opt4 : "As red as beetroot",
+        ans : "As red as beetroot"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As fit as fiddle",
+        opt2 : "As good as gold",
+        opt3 : "As black as bronze",
+        opt4 : "As impatient as lover",
+        ans : "As black as bronze"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As deep as well",
+        opt2 : "As busy as employees",
+        opt3 : "As cold as ice",
+        opt4 : "As red as turkey cock",
+        ans : "As busy as employees"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As white as milk",
+        opt2 : "As sly as fox",
+        opt3 : "As cool as marble",
+        opt4 : "As red as rose",
+        ans : "As white as milk"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As changeable as girl",
+        opt2 : "As changeable as boy",
+        opt3 : "As changeable as flatter",
+        opt4 : "All of these",
+        ans : "All of these"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As deep as well",
+        opt2 : "As pure as oil",
+        opt3 : "As good as cucumber",
+        opt4 : "All of these",
+        ans : "All of these"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As black as bronze",
+        opt2 : "As red as beetroot",
+        opt3 : "As cool as freezer",
+        opt4 : "All of these",
+        ans : "All of these"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As red as beetroot",
+        opt2 : "As black as bronze",
+        opt3 : "As hot as water heater",
+        opt4 : "All of these",
+        ans : "All of these"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As gloomy as night",
+        opt2 : "As black as eyeballs",
+        opt3 : "As cool as cucumber",
+        opt4 : "As red as turkey cock",
+        ans : "As black as eyeballs"
+      },
+	  { question : "Choose the incorrect simile:",
+        opt1 : "As per as question",
+        opt2 : "As sly as wolf",
+        opt3 : "As cool as marble",
+        opt4 : "As red as blood",
+        ans : "As per as question"
       }
    ]
    
