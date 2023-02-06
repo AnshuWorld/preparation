@@ -22,12 +22,12 @@
           <button class="btn" id="start">Start</button>
           <button class="btn" id="mus">🎶</button>
 	  <script type="text/javascript">
-         if( localStorage.hits ){
-            localStorage.hits = Number(localStorage.hits) +1;
+         if( sessionStorage.hits ){
+            sessionStorage.hits = Number(sessionStorage.hits) +1;
          } else{
-            localStorage.hits = 1;
+            sessionStorage.hits = 1;
          }
-         document.write("Total Views :" + localStorage.hits );
+         document.write("Total Views :" + sessionStorage.hits );
       </script>
        </div>
        <button class="btn dark" id="mode">🌙</button>
